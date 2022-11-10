@@ -1,5 +1,5 @@
 import React from "react";
-import makeStyles from "@mui"
+import { makeStyles } from "@mui/styles";
 
 function Header() {
     const classes = useStyles()
@@ -16,7 +16,7 @@ function Header() {
 
 const useStyles = makeStyles(theme => ({
     root:{
-        backgroundColor: theme.base.headerColor
+        backgroundColor: '#253280'
     }
 }));
 
