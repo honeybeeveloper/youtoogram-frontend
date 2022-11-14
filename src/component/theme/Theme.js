@@ -1,28 +1,34 @@
 import React from "react";
-import { 
-    createTheme, 
-    ThemeProvider, 
-    StyledEngineProvider, 
-} from "@mui/system";
+import { createTheme } from "@mui/material";
+import { StylesProvider, ThemeProvider } from "@mui/styles";
 
 
 function Theme(props) {
     const {children} = props;
 
     const base = {
-        headerColor: '#68bd69',
-
+        header:{
+            height: '50px',
+            headerColor: '#f3ece5',
+        }
     }
     const muiTheme = {
+        base: base,
+        overrides:{
+            MuiIconButton: {
+                colorPrimary: {
+                  color: '#dddcda',
+                },
+              },
+        }
 
     }
     
     const theme = createTheme(muiTheme);
     return (
-        <StyledEngineProvider>
+        <StylesProvider>
             <ThemeProvider theme={theme}>{children}</ThemeProvider>
-        </StyledEngineProvider>
-
+        </StylesProvider>
     )
 }
 
