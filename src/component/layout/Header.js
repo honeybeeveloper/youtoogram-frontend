@@ -1,35 +1,33 @@
 import React from "react";
-import { makeStyles } from "@mui/styles";
 import { TextField, IconButton, InputAdornment  } from "@mui/material";
 import { Search } from "@mui/icons-material"
+import StyledTheme from "../theme/StyledTheme";
 
 
 function Header() {
-    const classes = useStyles()
 
     return (
-        <div className={classes.root}>
-            <div className={classes.headerDiv}>
-                <div className={classes.titleDiv}>
-                    <label className={classes.title} >You too, gram</label>
+        <div style={useStyles.root}>
+            <div style={useStyles.headerDiv}>
+                <div style={useStyles.titleDiv}>
+                    <label style={useStyles.title} >You too, gram</label>
                 </div>
-                <div className={classes.textFieldDiv}>
+                <div style={useStyles.textFieldDiv}>
                     <TextField 
-                        className={classes.textField}
+                        style={useStyles.textField}
                         id="textField" 
                         variant="outlined" 
                         InputProps={{
                             sx: { width: 240, height: 30, paddingLeft: 0 },
-                            className: classes.textFieldInput,
+                            style: useStyles.textFieldInput,
                             startAdornment: (
                               <InputAdornment position="start">
-                                <IconButton className={classes.textFieldIcon}>
+                                <IconButton style={useStyles.textFieldIcon}>
                                   <Search />
                                 </IconButton>
                               </InputAdornment>
                             ),
                           }}
-                        
                         />
                 </div>
                 <div></div>
@@ -39,10 +37,11 @@ function Header() {
 }
 
 
-const useStyles = makeStyles(theme => ({
+
+const useStyles = {
     root: {
-        height: theme.base.header.height,
-        backgroundColor: theme.base.header.headerColor,
+        height: StyledTheme.base.header.height,
+        backgroundColor: StyledTheme.base.header.headerColor,
     },
     headerDiv: {
         display: "flex",
@@ -52,24 +51,24 @@ const useStyles = makeStyles(theme => ({
     titleDiv: {
         display: "flex",
         alignItems: "center",
-        width: theme.spacing(30)
+        width: StyledTheme.spacing * 30,
     },
     title: {
-        fontSize: theme.spacing(3),
+        fontSize: StyledTheme.spacing * 3,
         fontWeight: "bold"
     },
     textFieldDiv: {
         display: "flex",
         alignItems: "center",
-        width: theme.spacing(30),
+        width: StyledTheme.spacing * 30,
     },
     textField: {
     },
     textFieldInput: {
     },
     textFieldIcon: {
-        color: theme.overrides.MuiIconButton.colorPrimary.color
+        color: StyledTheme.muiTheme.overrides.MuiIconButton.colorPrimary.color
     }
-}));
+};
 
 export default Header;
