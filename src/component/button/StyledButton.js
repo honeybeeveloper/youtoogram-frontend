@@ -4,14 +4,10 @@ import PropTypes from "prop-types";
 import StyledTheme from "../theme/StyledTheme";
 
 function StyledButton(props){
-  const { name } = props
-  
-  const handleClick = () => {
-    console.log('button')
-  }
+  const { name, onClick } = props
 
   return (
-    <Button variant="contained" sx={useStyles.button} onClick={handleClick}>
+    <Button variant="contained" sx={useStyles.button} onClick={onClick}>
         <label style={useStyles.label}>{name}</label>
     </Button>
   )
@@ -19,6 +15,7 @@ function StyledButton(props){
 
 StyledButton.propTypes = {
   name: PropTypes.string.isRequired,
+  onClick: PropTypes.func.isRequired,
 };
 
 const useStyles = {
