@@ -5,30 +5,33 @@ import StyledTheme from "../theme/StyledTheme";
 
 
 function StyledTextField(props) {
-    const {id, inputLabel, width} = props
+    const {inputLabel, handleTextField, width} = props
 
     return (
         <span style={useStyles.root}>
             <TextField
-                style={useStyles.textField}
-                id={id}
+                style={{...useStyles.textField, 
+                        width : width? width : useStyles.textField.width }}
                 InputProps={{
-                    style: {width: width},
                     startAdornment: (
                     <InputAdornment position="start">
                         <label style={useStyles.textFieldInput}>{inputLabel}</label>
                     </InputAdornment>
                     ),
                 }}
-            
+                inputProps={{
+                    onChange: function (e) {
+                        handleTextField(e.currentTarget.value)
+                    },
+                }}
             />
         </span>
     )
 }
 
 StyledTextField.prototype = {
-    id: PropTypes.string.isRequired,
     inputLabel: PropTypes.string.isRequired,
+    handleTextField: PropTypes.func.isRequired,
 }
 
 const useStyles = {
@@ -36,9 +39,10 @@ const useStyles = {
         height: 0,
     },
     textField: {
-        width: '100%',
+        width: '30vw',
     },
     textFieldInput: {
+        width: StyledTheme.spacing * 10,
         paddingRight: StyledTheme.spacing,
         fontWeight: 'bold',
         color: '#9f9fc1',
